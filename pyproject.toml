@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vendomatic"
+version = "1.0.0"
+description = "A toy vending machine: library, CLI and HTTP API, standard library only"
+readme = "VENDOMATIC.md"
+requires-python = ">=3.10"
+dependencies = []
+
+[project.scripts]
+vendomatic = "vendomatic.cli:run"
+
+[tool.setuptools.packages.find]
+where = ["src"]
