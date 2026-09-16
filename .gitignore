@@ -1,0 +1,10 @@
+.robocop_cache/
+.robotcode_cache/
+results/
+out/
+output.xml
+log.html
+report.html
+__pycache__/
+*.egg-info/
+vendomatic-state.json

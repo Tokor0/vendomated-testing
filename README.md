@@ -2,6 +2,8 @@
 
 The goal of this repository is to show my work in learning to use Robot Framework for automated testing of Vendomatic, a small toy vending machine Python library I had Claude Opus write for me.
 
+`tests/vendomatic.robot` is the main file to show my work.
+
 ## Project structure
 
 | Path | What it is |
@@ -14,5 +16,3 @@ The goal of this repository is to show my work in learning to use Robot Framewor
 | `flake.nix` | Entry point of the Nix flake: the dev shell (`nix develop`) and the packages that make up the toolchain. |
 | `flake.lock` | Pinned versions of the flake's inputs. |
 | `nix/` | What `flake.nix` imports. `toolchain.nix` builds the single Python environment holding Robot Framework, Robocop and RobotCode; `python-packages.nix` packages the RobotCode distributions that nixpkgs does not have yet. |
-| `.helix/languages.toml` | Editor setup: points Helix at the RobotCode language server and debug adapter, with notes on why each setting is what it is. |
-| `.gitignore` | Test output (`output.xml`, `log.html`, `report.html`, `results/`), tool caches and the machine's saved state file. |
