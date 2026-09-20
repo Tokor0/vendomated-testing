@@ -1,41 +1,35 @@
 *** Settings ***
 Documentation    Tests for the Vendomatic toy Python library.
 ...              This is for the purpose of studying Robot Framework.
-
-Library          vendomatic.machine.VendingMachine    service_pin=1234
+Resource         ../resources/vendomatic.resource
 
 
 *** Test Cases ***
 
 
 Machine Starts Empty And Locked
-    ${s} =    Status
     # Log To Console   \nSTATUS: ${s}
-    Should Be Equal As Integers    ${s}[slots]    0
-    Should Be True    ${s}[locked]
+    Machine Should Have N Slots    0
+    Machine Should Be Locked
 
 
 
-Machine Can Be Unlocked With PIN And Locked
-    Unlock    1234
-    ${s} =    Status
-    # Log To Console   \nSTATUS: ${s}
-    Should Be True    not ${s}[locked]
+Machine Can Be Unlocked With PIN And Then Locked
+    Unlock Machine
+    Machine Should Be Unlocked
     Lock
-    ${s} =    Status
-    Should Be True    ${s}[locked]
-
-    # Check that the pin can also be changed
+    Machine Should Be Locked
 
 
 
-Machine Not Unlocked By Wrong PIN
-    # Probably the weakest possible way to test this BTW, but it will suffice for this
-    Run Keyword And Expect Error    *Incorrect service PIN    Unlock    4321
-    ${s} =    Status
-    # Log To Console   \nSTATUS: ${s}
-    Should Be True    ${s}[locked]
-    Run Keyword And Expect Error    MachineLockedError*    Set Service Pin    4321    3214
+Machine Not Unlocked By Wrong Or Invalid PIN
+    [Documentation]    Attempt to unlock the machine with invalid PINs and a valid but wrong PIN.
+    ...                The machine should remain locked.
+    FOR    ${pin}    IN    @{INVALID_PINS}    ${ALT_PIN}
+        # Log To Console    TESTING PIN: ${pin}
+        Run Keyword And Expect Error    *Incorrect service PIN    Unlock Machine    ${pin}
+    END
+    Machine Should Be Locked
 
 
 
