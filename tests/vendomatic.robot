@@ -51,8 +51,8 @@ Service PIN Change Denied On Wrong Or Invalid Current PIN
 Service Mode Actions Cannot Be Executed When Locked
     [Documentation]    Service mode actions should not be allowed when the machine is locked.
     [Template]    Service Operation Should Be Denied
-    Add Slot    "A1"    "product"    100
+    Add Slot    A1    product    100
     Clear Sales
     Collect Cash
     Load Coins    {100: 1}
-    Restock    "A1"
+    Restock    A1

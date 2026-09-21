@@ -4,6 +4,7 @@ results/
 out/
 output.xml
 log.html
+kw.html
 report.html
 __pycache__/
 *.egg-info/
