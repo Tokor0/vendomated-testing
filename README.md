@@ -4,6 +4,10 @@ The goal of this repository is to show my work in learning to use Robot Framewor
 
 `tests/vendomatic.robot` and `resources/vendomatic.resource` are the main files to show my work.
 
+## TODO
+- HTTP API testing
+- CLI testing
+
 ## Project structure
 
 | Path | What it is |
