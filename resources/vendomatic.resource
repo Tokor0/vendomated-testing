@@ -13,6 +13,10 @@ Unlock Machine
     [Arguments]    ${pin}=${SERVICE_PIN}
     Unlock    ${pin}
 
+Wrong Pin Is Refused
+    [Arguments]    ${pin}
+    Run Keyword And Expect Error    *Incorrect service PIN    Unlock    ${pin}
+
 Machine Should Be Locked
     ${s} =    Status
     Should Be True    ${s}[locked]
@@ -25,3 +29,7 @@ Machine Should Have N Slots
     [Arguments]    ${N}
     ${s} =    Status
     Should Be Equal As Integers    ${s}[slots]    ${N}
+
+Service Operation Should Be Denied
+    [Arguments]    ${op}   @{args}
+    Run Keyword And Expect Error    MachineLockedError*    ${op}    @{args}

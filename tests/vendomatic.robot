@@ -60,11 +60,12 @@ Set Service Pin Behavior
 
 
 Service Mode Actions Cannot Be Executed When Locked
-    Run Keyword And Expect Error    MachineLockedError*    Add Slot    "A1"    "product"    100
-    Run Keyword And Expect Error    MachineLockedError*    Clear Sales
-    Run Keyword And Expect Error    MachineLockedError*    Collect Cash
-    Run Keyword And Expect Error    MachineLockedError*    Load Coins    {100: 1}
-    Run Keyword And Expect Error    MachineLockedError*    Restock    "A1"
+    [Template]    Service Operation Should Be Denied
+    Add Slot    "A1"    "product"    100
+    Clear Sales
+    Collect Cash
+    Load Coins    {100: 1}
+    Restock    "A1"
 
 
 
