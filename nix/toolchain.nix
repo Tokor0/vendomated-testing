@@ -10,7 +10,10 @@
 {
   flake.overlays.default = final: prev: {
     pythonPackagesExtensions = (prev.pythonPackagesExtensions or [ ]) ++ [
-      (import ./python-packages.nix { inherit lib; pkgs = final; })
+      (import ./python-packages.nix {
+        inherit lib;
+        pkgs = final;
+      })
     ];
   };
 
@@ -38,6 +41,7 @@
             ps.robotcode-runner
             ps.robotframework
             ps.robotframework-robocop
+            ps.robotframework-requests
           ]
           ++ extraPackages ps
         );
