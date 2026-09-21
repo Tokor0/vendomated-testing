@@ -54,6 +54,7 @@ Purchase
     ${body} =    Set Variable    ${resp.json()}
     Return From Keyword    ${body}
 
+# Quite a lot of boilerplate... Figure out a better way to get the body
 Insert Coin
     [Documentation]    Attempts to insert a coin.
     [Arguments]    ${value}    ${expected_status}=201
